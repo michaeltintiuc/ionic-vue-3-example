@@ -19,6 +19,9 @@
       <p>
         <RouterLink to="/other2">Go to other 2</RouterLink>
       </p>
+      <p>
+        <RouterLink to="/other3">Go to other 3</RouterLink>
+      </p>
       <h1>injected: {{ asd.value }}</h1>
     </IonContent>
   </div>

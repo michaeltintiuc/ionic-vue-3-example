@@ -13,13 +13,17 @@ const history = createWebHistory();
 const router = createRouter({
   history,
   routes: [
-    { path: "/", component: Home },
+    { path: "/", component: Home, props: { msg: "asd" } },
     { path: "/other", component: HelloWorld, props: { msg: "other" } },
     { path: "/other2", component: { ...HelloWorld }, props: { msg: "other2" } },
+    { path: "/other3", component: { ...Home }, props: { msg: "other2" } },
   ],
 });
 
-createApp(App)
+const app = createApp(App)
   .use(IonicVue)
-  .use(router)
-  .mount("#app");
+  .use(router);
+
+router.isReady().then(() => {
+  app.mount("#app");
+});

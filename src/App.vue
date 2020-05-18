@@ -23,6 +23,11 @@ export default {
   },
   provide: {
     mykey: inject
+  },
+  mounted() {
+    setInterval(() => {
+      inject.value = Math.round(Math.random() * 10).toString();
+    }, 500);
   }
 };
 </script>
