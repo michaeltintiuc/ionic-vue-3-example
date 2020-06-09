@@ -11,11 +11,16 @@
     <IonContent>
       <img alt="Vue logo" src="../assets/logo.png" />
 
+      <ion-icon icon="add"></ion-icon>
+
       <p>
         <RouterLink to="/other">Go to 2nd page</RouterLink>
       </p>
       <p>
         <RouterLink to="/other2">Go to other 2</RouterLink>
+      </p>
+      <p>
+        <RouterLink to="/tabs">Go to tabs</RouterLink>
       </p>
 
       <!-- <IonModal v-model="isOpen" :showBackdrop="false"> -->
