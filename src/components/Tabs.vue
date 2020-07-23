@@ -1,72 +1,47 @@
 <template>
   <div class="ion-page">
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>Other</IonTitle>
-        <IonButtons slot="start">
-          <IonBackButton />
-        </IonButtons>
-      </IonToolbar>
-    </IonHeader>
-    <IonContent>
-      <IonTabs>
-        <IonTab tab="add">
-          <IonContent>
-            <h1>add</h1>
-            <p>
-              <RouterLink to="/">Go home</RouterLink>
-            </p>
-          </IonContent>
-        </IonTab>
-        <IonTab tab="map">
-          <h1>map</h1>
-        </IonTab>
-        <template v-slot:bottom>
-          <IonTabBar>
-            <IonTabButton tab="add">
-              <IonIcon icon="add" />
-            </IonTabButton>
-            <IonTabButton tab="map">
-              <IonIcon icon="map" />
-            </IonTabButton>
-          </IonTabBar>
-        </template>
-      </IonTabs>
-    </IonContent>
+    <IonTabs @ionTabsWillChange="asd">
+      <RouterView />
+      <template v-slot:top>
+        <IonTabBar>
+          <IonTabButton tab="add" href="/tabs/stuff">
+            <IonIcon icon="add" />
+          </IonTabButton>
+          <IonTabButton tab="map" href="/tabs/map">
+            <IonIcon icon="map" />
+          </IonTabButton>
+        </IonTabBar>
+      </template>
+    </IonTabs>
   </div>
 </template>
 
 <script lang="ts">
 import {
-  IonContent,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonBackButton,
-  IonTab,
+  //IonTab,
   IonTabs,
   IonTabBar,
   IonTabButton,
   IonIcon
+  //IonRouterView
 } from "@modus/ionic-vue";
 export default {
-  name: "HelloWorld",
+  name: "Tabs",
   components: {
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonButtons,
-    IonBackButton,
-    IonTab,
+    //IonTab,
     IonTabs,
     IonTabBar,
     IonTabButton,
     IonIcon
+    //IonRouterView
   },
   props: {
     msg: String
+  },
+  methods: {
+    asd(e: any) {
+      console.log("change", e);
+    }
   }
 };
 </script>

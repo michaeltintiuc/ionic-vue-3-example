@@ -1,11 +1,12 @@
 <template>
   <IonApp>
-    <IonRouterView />
-    <!-- <RouterView v-slot="{ Component, props }"> -->
-    <!-- <Transition mode="in-out" :appear="true"> -->
-    <!-- <component :is="Component" v-bind="props" /> -->
-    <!-- </Transition> -->
-    <!-- </RouterView> -->
+    <IonRouterView v-slot="{ Component, transitionProps }">
+      <Transition v-bind="transitionProps">
+        <KeepAlive>
+          <component :is="Component" />
+        </KeepAlive>
+      </Transition>
+    </IonRouterView>
   </IonApp>
 </template>
 
@@ -28,6 +29,11 @@ export default {
     setInterval(() => {
       inject.value = Math.round(Math.random() * 10).toString();
     }, 500);
+  },
+  methods: {
+    foo() {
+      console.log("foo");
+    }
   }
 };
 </script>

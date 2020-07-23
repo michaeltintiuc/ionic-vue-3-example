@@ -35,22 +35,14 @@
       </IonModal>
       <p>modal: {{ isOpen }}</p>
       <p>actionsheet: {{ isOpenAS }}</p>
-      <IonItem>
-        <IonLabel>Default Label</IonLabel>
-        <!-- <ion-input type="text" v-model:value="msg" @ionFocous="willDismiss" /> -->
-        <IonInput
-          v-model="msg"
-          v-model:disabled="isOpen"
-          @ionBlur="willDismiss"
-          :clearInput="true"
-        />
-      </IonItem>
-      <IonItem>
-        <IonLabel>Default Label</IonLabel>
-        <!-- <ion-input type="text" v-model:value="msg" @ionFocous="willDismiss" /> -->
-        <IonCheckbox v-model="isOpen" />
-      </IonItem>
       {{ msg }}
+      <IonInput v-model="msg" />
+      {{ value }}
+      <IonSelect v-model="value">
+        <IonSelectOption value="female">Female</IonSelectOption>
+        <IonSelectOption value="male">Male</IonSelectOption>
+      </IonSelect>
+      <IonButton :href="{ path: '/' }" @click="asd">foo bar</IonButton>
       <IonButton @click="openModalComponent">Open modal component</IonButton>
       <IonButton @click="isOpenAS = true" v-model:disabled="isOpen"
         >Show Action Sheet Component</IonButton
@@ -59,7 +51,7 @@
       <IonActionSheet
         @willPresent="log"
         v-model="isOpenAS"
-        :buttons="buttons"
+        :buttons="['asd', 'qwe']"
         header="Foobar"
       />
     </IonContent>
@@ -69,43 +61,43 @@
 <script lang="ts">
 import {
   IonModal,
-  IonInput,
   IonActionSheet,
-  IonLabel,
-  IonItem,
-  IonCheckbox,
+  IonInput,
   IonButton,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonSelect,
+  IonSelectOption
 } from "@modus/ionic-vue";
 import HelloWorld from "./HelloWorld.vue";
+import { ref } from "vue";
 
 export default {
   name: "Home",
   components: {
-    IonLabel,
-    IonItem,
     IonModal,
-    IonInput,
     IonActionSheet,
     HelloWorld,
-    IonCheckbox,
     IonButton,
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
     IonButtons,
-    IonBackButton
+    IonBackButton,
+    IonInput,
+    IonSelect,
+    IonSelectOption
   },
   data() {
     return {
       isOpen: false,
       isOpenAS: false,
+      value: ref("female"),
       msg: "asd",
       buttons: [
         {
@@ -128,7 +120,13 @@ export default {
       ]
     };
   },
+  mounted() {
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+  },
   methods: {
+    asd(...asd: any[]) {
+      console.log(asd);
+    },
     log(e) {
       console.log(e);
     },
@@ -138,6 +136,7 @@ export default {
     },
     openModalComponent() {
       this.isOpen = true;
+      this.msg = "opened";
     }
   }
 };

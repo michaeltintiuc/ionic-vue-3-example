@@ -1,5 +1,5 @@
 <template>
-  <div class="ion-page">
+  <div class="ion-page foo">
     <IonHeader>
       <IonToolbar>
         <IonTitle>Other</IonTitle>
@@ -48,6 +48,9 @@ export default {
   },
   props: {
     msg: String
+  },
+  mounted() {
+    console.log("other page");
   },
   inject: {
     asd: {
