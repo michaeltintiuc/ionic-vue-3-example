@@ -5,10 +5,14 @@
         <IonTitle>Home</IonTitle>
         <IonButtons slot="start">
           <IonBackButton defaultHref="/" />
+          <ion-menu-button />
         </IonButtons>
       </IonToolbar>
     </IonHeader>
-    <IonContent>
+    <IonMenu contentId="foobar">
+      <h1>Menu!</h1>
+    </IonMenu>
+    <IonContent id="foobar">
       <img alt="Vue logo" src="../assets/logo.png" />
 
       <ion-icon icon="add"></ion-icon>
@@ -71,7 +75,9 @@ import {
   IonButtons,
   IonBackButton,
   IonSelect,
-  IonSelectOption
+  IonSelectOption,
+  IonMenu,
+  IonMenuButton
 } from "@modus/ionic-vue";
 import HelloWorld from "./HelloWorld.vue";
 import { ref } from "vue";
@@ -91,7 +97,9 @@ export default {
     IonBackButton,
     IonInput,
     IonSelect,
-    IonSelectOption
+    IonSelectOption,
+    IonMenuButton,
+    IonMenu
   },
   data() {
     return {

@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { IonApp, IonRouterView } from "@modus/ionic-vue";
+import { IonApp, IonRouterView, IonMenu } from "@modus/ionic-vue";
 import { ref } from "vue";
 
 const inject = ref("fooo");
@@ -20,7 +20,8 @@ export default {
   name: "App",
   components: {
     IonApp,
-    IonRouterView
+    IonRouterView,
+    IonMenu
   },
   provide: {
     mykey: inject
