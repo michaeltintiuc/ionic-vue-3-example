@@ -1,65 +1,68 @@
 <template>
-  <div class="ion-page">
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>Home</IonTitle>
-        <IonButtons slot="start">
-          <IonBackButton defaultHref="/" />
-          <ion-menu-button />
-        </IonButtons>
-      </IonToolbar>
-    </IonHeader>
+  <IonSplitPane contentId="foobar">
     <IonMenu contentId="foobar">
       <h1>Menu!</h1>
     </IonMenu>
-    <IonContent id="foobar">
-      <img alt="Vue logo" src="../assets/logo.png" />
 
-      <ion-icon icon="add"></ion-icon>
+    <div class="ion-page" id="foobar">
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Home</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/" />
+            <ion-menu-button />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <img alt="Vue logo" src="../assets/logo.png" />
 
-      <p>
-        <RouterLink to="/other">Go to 2nd page</RouterLink>
-      </p>
-      <p>
-        <RouterLink to="/other2">Go to other 2</RouterLink>
-      </p>
-      <p>
-        <RouterLink to="/tabs">Go to tabs</RouterLink>
-      </p>
+        <ion-icon icon="add"></ion-icon>
 
-      <!-- <IonModal v-model="isOpen" :showBackdrop="false"> -->
-      <IonModal
-        :isOpen="isOpen"
-        @willDismiss="willDismiss"
-        :showBackdrop="false"
-      >
-        <h1>{{ msg }}</h1>
-        <h1>qweqwe</h1>
-        <HelloWorld msg="qwe" />
-      </IonModal>
-      <p>modal: {{ isOpen }}</p>
-      <p>actionsheet: {{ isOpenAS }}</p>
-      {{ msg }}
-      <IonInput v-model="msg" />
-      {{ value }}
-      <IonSelect v-model="value">
-        <IonSelectOption value="female">Female</IonSelectOption>
-        <IonSelectOption value="male">Male</IonSelectOption>
-      </IonSelect>
-      <IonButton :href="{ path: '/' }" @click="asd">foo bar</IonButton>
-      <IonButton @click="openModalComponent">Open modal component</IonButton>
-      <IonButton @click="isOpenAS = true" v-model:disabled="isOpen"
-        >Show Action Sheet Component</IonButton
-      >
+        <p>
+          <RouterLink to="/other">Go to 2nd page</RouterLink>
+        </p>
+        <p>
+          <RouterLink to="/other2">Go to other 2</RouterLink>
+        </p>
+        <p>
+          <RouterLink to="/tabs">Go to tabs</RouterLink>
+        </p>
 
-      <IonActionSheet
-        @willPresent="log"
-        v-model="isOpenAS"
-        :buttons="['asd', 'qwe']"
-        header="Foobar"
-      />
-    </IonContent>
-  </div>
+        <!-- <IonModal v-model="isOpen" :showBackdrop="false"> -->
+        <IonModal
+          :isOpen="isOpen"
+          @willDismiss="willDismiss"
+          :showBackdrop="false"
+        >
+          <h1>{{ msg }}</h1>
+          <h1>qweqwe</h1>
+          <HelloWorld msg="qwe" />
+        </IonModal>
+        <p>modal: {{ isOpen }}</p>
+        <p>actionsheet: {{ isOpenAS }}</p>
+        {{ msg }}
+        <IonInput v-model="msg" />
+        {{ value }}
+        <IonSelect v-model="value">
+          <IonSelectOption value="female">Female</IonSelectOption>
+          <IonSelectOption value="male">Male</IonSelectOption>
+        </IonSelect>
+        <IonButton :href="{ path: '/' }" @click="asd">foo bar</IonButton>
+        <IonButton @click="openModalComponent">Open modal component</IonButton>
+        <IonButton @click="isOpenAS = true" v-model:disabled="isOpen"
+          >Show Action Sheet Component</IonButton
+        >
+
+        <IonActionSheet
+          @willPresent="log"
+          v-model="isOpenAS"
+          :buttons="['asd', 'qwe']"
+          header="Foobar"
+        />
+      </IonContent>
+    </div>
+  </IonSplitPane>
 </template>
 
 <script lang="ts">
@@ -77,7 +80,8 @@ import {
   IonSelect,
   IonSelectOption,
   IonMenu,
-  IonMenuButton
+  IonMenuButton,
+  IonSplitPane
 } from "@modus/ionic-vue";
 import HelloWorld from "./HelloWorld.vue";
 import { ref } from "vue";
@@ -87,6 +91,7 @@ export default {
   components: {
     IonModal,
     IonActionSheet,
+    IonSplitPane,
     HelloWorld,
     IonButton,
     IonHeader,

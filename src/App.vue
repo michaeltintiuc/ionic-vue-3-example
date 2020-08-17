@@ -11,32 +11,27 @@
 </template>
 
 <script lang="ts">
-import { IonApp, IonRouterView, IonMenu } from "@modus/ionic-vue";
-import { ref } from "vue";
+import { IonApp, IonRouterView, IonMenu, IonInput } from "@modus/ionic-vue";
+import { ref, defineComponent } from "vue";
+import { useRouter } from "vue-router";
 
 const inject = ref("fooo");
 
-export default {
+export default defineComponent({
   name: "App",
   components: {
     IonApp,
     IonRouterView,
-    IonMenu
+    IonMenu,
+    IonInput
   },
   provide: {
     mykey: inject
   },
-  mounted() {
-    setInterval(() => {
-      inject.value = Math.round(Math.random() * 10).toString();
-    }, 500);
-  },
-  methods: {
-    foo() {
-      console.log("foo");
-    }
+  setup() {
+    console.log(useRouter());
   }
-};
+});
 </script>
 
 <style>
